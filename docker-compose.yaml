@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  app:
+    build: ./app
+    volumes:
+      - ./app/src:/work
+
+  nginx:
+    image: nginx:1.18-alpine
+    ports:
+      - 10080:80
+
+  db:
+    build: ./mysql
+    volumes:
+      - ./mysql/db:/var/lib/mysql
